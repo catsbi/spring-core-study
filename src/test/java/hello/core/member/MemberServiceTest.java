@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("MemberService 클래스의")
 public class MemberServiceTest {
 
-    private MemberService memberService = new MemberServiceImpl();
+    private MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
 
     @DisplayName("join 메서드는")
     @Nested

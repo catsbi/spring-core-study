@@ -1,9 +1,9 @@
 package hello.core.order;
 
+import hello.core.AppConfig;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
-import hello.core.member.MemberServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -21,8 +21,10 @@ class OrderServiceTest {
 
     @BeforeEach
     void setup() {
-        orderService = new OrderServiceImpl();
-        memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+
+        orderService = appConfig.orderService();
+        memberService = appConfig.memberService();
 
         basicMember = new Member(1L, "BASIC", Grade.BASIC);
         vipMember = new Member(2L, "VIP", Grade.VIP);

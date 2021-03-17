@@ -1,10 +1,13 @@
 package hello.core.member;
 
 import hello.core.AppConfig;
+import hello.core.discount.DiscountPolicy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,8 +18,11 @@ public class MemberServiceTest {
 
     @BeforeEach
     void setup() {
-        AppConfig appConfig = new AppConfig();
-        memberService = appConfig.memberService();
+        /*AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();*/
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        memberService = applicationContext.getBean("memberService", MemberService.class);
     }
 
     @DisplayName("join 메서드는")

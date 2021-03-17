@@ -1,7 +1,9 @@
 package hello.core.discount;
 
+import hello.core.AppConfig;
 import hello.core.member.Grade;
 import hello.core.member.Member;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -11,7 +13,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("RateDiscountPolicy 클래스의 ")
 class RateDiscountPolicyTest {
 
-    private RateDiscountPolicy discountPolicy = new RateDiscountPolicy();
+    private DiscountPolicy discountPolicy;
+
+    @BeforeEach
+    void setup() {
+        AppConfig appConfig = new AppConfig();
+        discountPolicy = appConfig.discountPolicy();
+    }
 
     @Nested
     @DisplayName("discount 메서드는")

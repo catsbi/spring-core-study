@@ -1,5 +1,7 @@
 package hello.core.member;
 
+import hello.core.AppConfig;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -9,7 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("MemberService 클래스의")
 public class MemberServiceTest {
 
-    private MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
+    private MemberService memberService;
+
+    @BeforeEach
+    void setup() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+    }
 
     @DisplayName("join 메서드는")
     @Nested

@@ -7,6 +7,9 @@ import hello.core.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * 테스트
+ */
 @Component
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
